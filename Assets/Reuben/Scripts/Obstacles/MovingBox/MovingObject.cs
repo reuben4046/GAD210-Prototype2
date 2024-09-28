@@ -28,6 +28,12 @@ public class MovingObject : MonoBehaviour
 
     Vector3 startPosition;
 
+    [Button]
+    public void UpdateSettings()
+    {
+        startPosition = transform.position;
+    }
+
     void OnValidate()
     {
         startPosition = transform.position;
