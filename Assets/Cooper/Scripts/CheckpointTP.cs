@@ -27,8 +27,8 @@ public class CheckpointTP : MonoBehaviour
         if (other.tag == "CheckPoint") 
         { 
             currentCheckpoint = other.transform.position;
+            currentCheckpoint.y += 1;
         }
-        currentCheckpoint.y += 1;
         other.tag = "UsedPoint";
     }
 }
