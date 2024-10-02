@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - SavePoint
   - UsedPoint
+  - BothPoints
   layers:
   - Default
   - TransparentFX

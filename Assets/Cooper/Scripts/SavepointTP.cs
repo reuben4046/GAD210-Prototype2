@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckpointTP : MonoBehaviour
+public class SavepointTP : MonoBehaviour
 {
-    [SerializeField] private Vector3 currentCheckpoint;
+
+    [SerializeField] private Vector3 currentSavepoint;
 
     // Start is called before the first frame update
     void Start()
@@ -17,26 +18,23 @@ public class CheckpointTP : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            transform.position = currentCheckpoint;
+            transform.position = currentSavepoint;
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            GetComponent<SavepointTP> ().enabled = true;
+            GetComponent<CheckpointTwo> ().enabled = true;
             this.enabled = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Hit {other.tag}");
-        if (other.tag == "CheckPoint" || other.tag == "BothPoints") 
+        if (other.tag == "SavePoint" || other.tag == "BothPoints")
         {
-            Debug.Log("Hit Checkpoint");
-            currentCheckpoint = other.transform.position;
-            currentCheckpoint.y += 1;
+            currentSavepoint = other.transform.position;
+            currentSavepoint.y += 1;
         }
         other.tag = "UsedPoint";
     }
-
 }

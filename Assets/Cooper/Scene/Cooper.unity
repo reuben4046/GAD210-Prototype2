@@ -447,6 +447,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 864817217}
+    - targetCorrespondingSourceObject: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 864817224}
     - targetCorrespondingSourceObject: {fileID: 4459864851310106424, guid: 6bacecc4f3df9584198879c73a6b6c36,
         type: 3}
       insertIndex: -1
@@ -608,6 +612,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCheckpoint: {x: 0, y: 0, z: 0}
+--- !u!114 &864817224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864817210}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ca09a5ec0087c4aae3886440eb38cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSavepoint: {x: 0, y: 0, z: 0}
 --- !u!1 &1718661558
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,7 +639,7 @@ GameObject:
   - component: {fileID: 1718661559}
   m_Layer: 0
   m_Name: Checkpoint (1)
-  m_TagString: CheckPoint
+  m_TagString: BothPoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -825,6 +842,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735766305055726803, guid: 3c0ab63195419e34eb35500da8e12c5a,
+        type: 3}
+      propertyPath: m_TagString
+      value: BothPoints
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

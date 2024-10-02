@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckpointTP : MonoBehaviour
+public class CheckpointTwo : MonoBehaviour
 {
     [SerializeField] private Vector3 currentCheckpoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class CheckpointTP : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            GetComponent<SavepointTP> ().enabled = true;
+            GetComponent<SavepointTP>().enabled = true;
             this.enabled = false;
         }
     }
@@ -30,7 +30,7 @@ public class CheckpointTP : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log($"Hit {other.tag}");
-        if (other.tag == "CheckPoint" || other.tag == "BothPoints") 
+        if (other.tag == "CheckPoint" || other.tag == "BothPoints")
         {
             Debug.Log("Hit Checkpoint");
             currentCheckpoint = other.transform.position;
@@ -38,5 +38,4 @@ public class CheckpointTP : MonoBehaviour
         }
         other.tag = "UsedPoint";
     }
-
 }
