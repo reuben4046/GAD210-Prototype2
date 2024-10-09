@@ -7,6 +7,7 @@ public class HealthSytem : MonoBehaviour
 {
     public Transform spawnPoint;
     public int health;
+    public SavepointTP savePointTP;
 
     public GameObject ground;
 
@@ -16,11 +17,12 @@ public class HealthSytem : MonoBehaviour
         if (collision.gameObject == ground)
         {
             health--;
-            if (health !<= 0)
+            Debug.Log($"{health} lives left");
+            if (health > 0)
             {
                 BackToCheckPoint();
             }
-            else { BackToStart(); }
+            else { BackToStart(); health = 3; }
         }
     }
 
@@ -31,12 +33,19 @@ public class HealthSytem : MonoBehaviour
 
     void BackToCheckPoint()
     {
-
+        if (!savePointTP.switched)
+        {
+            transform.position = savePointTP.currentCheckpoint;
+        }
+        else
+        {
+            transform.position = savePointTP.currentLifeSysytem;
+        }
     }
 
-    Transform GetLastCheckPoint()
+    /*Transform GetLastCheckPoint()
     {
 
         return null;
-    }
+    } */
 }

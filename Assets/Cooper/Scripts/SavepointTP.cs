@@ -5,10 +5,9 @@ using UnityEngine;
 public class SavepointTP : MonoBehaviour
 {
 
-    [SerializeField] private Vector3 currentLifeSysytem;
-    [SerializeField] private Vector3 currentCheckpoint;
-    [SerializeField] private bool switched = false;
-    [SerializeField] private int lives = 3;
+    [SerializeField] public Vector3 currentLifeSysytem;
+    [SerializeField] public Vector3 currentCheckpoint;
+    [SerializeField] public bool switched = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +27,6 @@ public class SavepointTP : MonoBehaviour
            else
            {
                 transform.position = currentLifeSysytem;
-                lives--;
-                Debug.Log($"{lives} left");
            }           
         }
 
@@ -55,8 +52,8 @@ public class SavepointTP : MonoBehaviour
         {
             if (other.tag == "CheckPoint" || other.tag == "BothPoints")
             {
-                Debug.Log($"Check point hit");
-                Debug.Log("Hit Checkpoint");
+                Debug.Log($"Checkpoint hit");
+                //Debug.Log("Hit Checkpoint");
                 currentCheckpoint = other.transform.position;
                 currentCheckpoint.y += 1;
                 other.tag = "UsedPoint";
