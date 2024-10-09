@@ -5,7 +5,10 @@ using UnityEngine;
 public class SavepointTP : MonoBehaviour
 {
 
-    [SerializeField] private Vector3 currentSavepoint;
+    [SerializeField] private Vector3 currentLifeSysytem;
+    [SerializeField] private Vector3 currentCheckpoint;
+    [SerializeField] private bool switched = false;
+    [SerializeField] private int lives = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -18,23 +21,57 @@ public class SavepointTP : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            transform.position = currentSavepoint;
+           if (!switched)
+           {
+                transform.position = currentCheckpoint;
+            }
+           else
+           {
+                transform.position = currentLifeSysytem;
+                lives--;
+                Debug.Log($"{lives} left");
+           }           
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            GetComponent<CheckpointTwo> ().enabled = true;
-            this.enabled = false;
+            if (!switched) 
+            {
+                switched = true;
+                Debug.Log($"Lives enabled");
+            }
+            else
+            {
+                switched = false;
+                Debug.Log($"Checkpoints enabled");
+            }
+            
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "SavePoint" || other.tag == "BothPoints")
+        if (!switched)
         {
-            currentSavepoint = other.transform.position;
-            currentSavepoint.y += 1;
+            if (other.tag == "CheckPoint" || other.tag == "BothPoints")
+            {
+                Debug.Log($"Check point hit");
+                Debug.Log("Hit Checkpoint");
+                currentCheckpoint = other.transform.position;
+                currentCheckpoint.y += 1;
+                other.tag = "UsedPoint";
+            }
         }
-        other.tag = "UsedPoint";
+        else
+        {
+            if (other.tag == "LifeSystem" || other.tag == "BothPoints")
+            {
+                Debug.Log($"Life save hit");
+                currentLifeSysytem = other.transform.position;
+                currentLifeSysytem.y += 1;
+                other.tag = "UsedPoint";
+            }
+        }      
     }
+
 }
