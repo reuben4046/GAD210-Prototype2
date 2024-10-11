@@ -66,6 +66,6 @@ public class CheckpointRP : MonoBehaviour
             Gizmos.color = Color.green;
         }
         
-        Gizmos.DrawWireCube(transform.position, new Vector3(6f, 4f, 6f));
+        Gizmos.DrawWireCube(transform.position,GetComponent<BoxCollider>().size);
     }
 }
