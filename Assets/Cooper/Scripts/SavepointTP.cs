@@ -9,12 +9,6 @@ public class SavepointTP : MonoBehaviour
     [SerializeField] public Vector3 currentCheckpoint;
     [SerializeField] public bool switched = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -55,7 +49,7 @@ public class SavepointTP : MonoBehaviour
                 Debug.Log($"Checkpoint hit");
                 //Debug.Log("Hit Checkpoint");
                 currentCheckpoint = other.transform.position;
-                currentCheckpoint.y += 1;
+                currentCheckpoint.y += 1f;
                 other.tag = "UsedPoint";
             }
         }
@@ -65,7 +59,7 @@ public class SavepointTP : MonoBehaviour
             {
                 Debug.Log($"Life save hit");
                 currentLifeSysytem = other.transform.position;
-                currentLifeSysytem.y += 1;
+                currentLifeSysytem.y += 1f;
                 other.tag = "UsedPoint";
             }
         }      

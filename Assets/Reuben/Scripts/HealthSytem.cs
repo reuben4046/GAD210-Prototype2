@@ -42,10 +42,4 @@ public class HealthSytem : MonoBehaviour
             transform.position = savePointTP.currentLifeSysytem;
         }
     }
-
-    /*Transform GetLastCheckPoint()
-    {
-
-        return null;
-    } */
 }
