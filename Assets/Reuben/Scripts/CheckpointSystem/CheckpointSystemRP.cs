@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckpointSystemRP : MonoBehaviour
 {
+
     //the game mode Lives or chekpoint mode
     public bool isInCheckpointMode;
     
@@ -12,6 +13,9 @@ public class CheckpointSystemRP : MonoBehaviour
 
     //the list of checkpoints (this is populated by each of the checkpoints when the game begins)
     public List<CheckpointRP> checkPointList = new List<CheckpointRP>();
+
+    [SerializeField] private int checkpointsCollected = 0;
+
 
     void Start()
     {
@@ -57,6 +61,13 @@ public class CheckpointSystemRP : MonoBehaviour
     //sets the current checkpoint this is called by the checkpoint script every time a new current checkpoint is set. 
     public void GetCurrentCheckpoint(CheckpointRP checkpoint)
     {
+        checkpointsCollected++;
+        Debug.Log("Checkpoints collected: " + checkpointsCollected);
         EventsSystemRP.OnGetCurrentCheckpoint?.Invoke(checkpoint);
+        EventsSystemRP.OnGetCheckPoints?.Invoke(checkpointsCollected);
+        if (checkpoint.lastCheckpoint == true)
+        {
+            EventsSystemRP.OnLastCheckpointReached?.Invoke();
+        }
     }
 }

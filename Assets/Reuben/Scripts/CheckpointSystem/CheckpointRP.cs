@@ -5,12 +5,14 @@ using UnityEngine;
 public class CheckpointRP : MonoBehaviour
 {   
     //variables for the checkpoint
+    public bool lastCheckpoint;
     public bool isCheckpoint = false;
     public bool checkPointUsed = false;
     public bool isCurrentCheckpoint = false;
 
     //reference to the checkpoint system
     public CheckpointSystemRP checkpointSystem;
+
 
     //gets checkpoint system script and then adds this checkpoint to the list in that checkpointSystem class
     private void Start()
@@ -41,7 +43,7 @@ public class CheckpointRP : MonoBehaviour
         }
         //called if not in checkpoint mode only difference is that every checkpoint workes now instead of the ones that have the isCheckpoint variable set to true
         if (!checkpointSystem.isInCheckpointMode)
-        {
+        {            
             foreach (CheckpointRP checkpoint in checkpointSystem.checkPointList)
             {
                 checkpoint.isCurrentCheckpoint = false;

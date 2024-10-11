@@ -8,7 +8,8 @@ public class RespawnSystem : MonoBehaviour
 {
     //starting position for when player runs out of lifes
     public Transform spawnPoint;
-    public int health;
+    private int lives;
+    public int playerLives;
     public GameObject ground;
 
     //checks if the game mode is in checkpoint mode or not. gets set through an event
@@ -17,6 +18,11 @@ public class RespawnSystem : MonoBehaviour
     //set through an event- gets set to current checkpoint from checkpoint system class
     private CheckpointRP currentCheckpoint;
 
+    void Start()
+    {
+        lives = playerLives;
+        EventsSystemRP.OnGetLives?.Invoke(lives);
+    }
     //subscriving and unsubscribing from events in this script
     void OnEnable()
     {
@@ -49,15 +55,21 @@ public class RespawnSystem : MonoBehaviour
         {
             return;
         }
+        EventsSystemRP.OnPlayerDeath?.Invoke();
         if (!isInCheckpointMode)
         {
-            health--;
-            Debug.Log($"{health} lives left");
-            if (health > 0)
+            lives--;
+            EventsSystemRP.OnGetLives?.Invoke(lives);
+            if (lives > 0)
             {
                 BackToCheckPoint();
             }
-            else { BackToStart(); health = 3; }
+            else 
+            { 
+                BackToStart(); 
+                lives = playerLives; 
+                EventsSystemRP.OnGetLives?.Invoke(lives);
+            }
         }
         if (isInCheckpointMode)
         {

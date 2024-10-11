@@ -15,4 +15,16 @@ static class EventsSystemRP
 
     public delegate void CloseMenuAndStartGame(bool isInCheckpointMode);
     public static CloseMenuAndStartGame OnCloseMenuAndStartGame;
+
+    public delegate void GetLives(int lives);
+    public static GetLives OnGetLives;
+
+    public delegate void GetCheckPoints(int checkPoint);
+    public static GetCheckPoints OnGetCheckPoints;
+
+    public delegate void lastCheckpointReached();
+    public static lastCheckpointReached OnLastCheckpointReached;
+
+    public delegate void PlayerDeath();
+    public static PlayerDeath OnPlayerDeath;
 }
