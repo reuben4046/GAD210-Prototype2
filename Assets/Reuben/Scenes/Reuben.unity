@@ -2884,12 +2884,12 @@ GameObject:
   m_Component:
   - component: {fileID: 754604476}
   m_Layer: 0
-  m_Name: InGame
+  m_Name: InGameUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &754604476
 Transform:
   m_ObjectHideFlags: 0
@@ -4341,8 +4341,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 1623546313}
   health: 4
-  checkpointSystem: {fileID: 1434907056}
-  currentCheckpoint: {fileID: 0}
   ground: {fileID: 1360626753}
 --- !u!4 &1283975245 stripped
 Transform:
@@ -4964,7 +4962,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInCheckpointMode: 0
-  menu: {fileID: 1494301889}
   firstPersonController: {fileID: 1216733929}
   checkPointList: []
 --- !u!1001 &1456845433
@@ -5060,7 +5057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1494301890
 Transform:
   m_ObjectHideFlags: 0
@@ -7587,6 +7584,7 @@ GameObject:
   - component: {fileID: 2010129837}
   - component: {fileID: 2010129836}
   - component: {fileID: 2010129835}
+  - component: {fileID: 2010129839}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7678,6 +7676,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2010129839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010129834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a80ccd55fbe94c009e681dbd6771db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 1494301889}
+  inGameUi: {fileID: 754604475}
+  livesPanel: {fileID: 1390799697}
+  checkpointsPanel: {fileID: 353723061}
 --- !u!4 &2011025039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4539017667549125118, guid: 41370cf48a117400ea074c17e0d50016,

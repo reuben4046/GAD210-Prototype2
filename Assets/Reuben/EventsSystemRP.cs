@@ -12,4 +12,7 @@ static class EventsSystemRP
 
     public delegate void isCheckpointMode(bool isInCheckpointMode);
     public static isCheckpointMode OnIsInCheckpointMode;
+
+    public delegate void CloseMenuAndStartGame(bool isInCheckpointMode);
+    public static CloseMenuAndStartGame OnCloseMenuAndStartGame;
 }

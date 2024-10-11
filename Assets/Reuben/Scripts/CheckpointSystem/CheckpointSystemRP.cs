@@ -6,9 +6,6 @@ public class CheckpointSystemRP : MonoBehaviour
 {
     //the game mode Lives or chekpoint mode
     public bool isInCheckpointMode;
-
-    //the menu Ui that pops up at the start (set inactive when the game begins)
-    public GameObject menu;
     
     //refernce to the fps controller so that it can be set inactive while it isnt needed. 
     public FirstPersonController firstPersonController;
@@ -36,14 +33,14 @@ public class CheckpointSystemRP : MonoBehaviour
     {   
         isInCheckpointMode = true;
         EventsSystemRP.OnIsInCheckpointMode?.Invoke(isInCheckpointMode);
-        menu.SetActive(false);
+        EventsSystemRP.OnCloseMenuAndStartGame?.Invoke(true);
         firstPersonController.enabled = true;
     }
     public void LifeSystemMode()
     {
         isInCheckpointMode = false;
         EventsSystemRP.OnIsInCheckpointMode?.Invoke(isInCheckpointMode);
-        menu.SetActive(false);
+        EventsSystemRP.OnCloseMenuAndStartGame?.Invoke(false);
         firstPersonController.enabled = true;
     }
 
