@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UiControllerRP : MonoBehaviour
 {
 
     public GameObject menu;
-
+    public GameObject gameFinishedPanel;
     public GameObject inGameUi;
     public GameObject livesPanel;
     public GameObject checkpointsPanel;
@@ -17,6 +19,7 @@ public class UiControllerRP : MonoBehaviour
         elapsedTime = 0f;
         menu.SetActive(true);
         inGameUi.SetActive(false);
+        gameFinishedPanel.SetActive(false);
     }
 
     void OnEnable()
@@ -85,11 +88,24 @@ public class UiControllerRP : MonoBehaviour
             int seconds = Mathf.FloorToInt(elapsedTime % 60);
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
+        if (menu.activeSelf == true || gameFinishedPanel.activeSelf == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        } else if (inGameUi.activeSelf == true) 
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public void LastCheckpointReached()
     {
         updateTime = false;
+        gameFinishedPanel.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     [SerializeField] private TextMeshProUGUI playerDeathsText;
