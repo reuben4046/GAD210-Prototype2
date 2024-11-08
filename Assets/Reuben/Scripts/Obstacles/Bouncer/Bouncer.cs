@@ -1,8 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Rider.Unity.Editor;
-using Unity.VisualScripting;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class Bouncer : MonoBehaviour
